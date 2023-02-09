@@ -45,7 +45,7 @@
           
       </div>
       <div class="bg-gray-300">
-          <button @click="PrintElem()" class=" hover:bg-gray-100 text-gray-800 font-semibold py-1 px-2 border border-gray-400 rounded shadow">
+          <button @click="printDiv('receipt')" class=" hover:bg-gray-100 text-gray-800 font-semibold py-1 px-2 border border-gray-400 rounded shadow">
               Print
           </button>
       </div>
@@ -74,6 +74,17 @@ export default {
   },
 
   methods:{ 
+    printDiv(divName){
+			var printContents = document.getElementById(divName).innerHTML;
+			var originalContents = document.body.innerHTML;
+
+			document.body.innerHTML = printContents;
+
+			window.print();
+
+			document.body.innerHTML = originalContents;
+
+		},
     PrintElem(){
         const MyElement=document.getElementById('receipt').innerHTML;
         const filename = "Report.txt";
